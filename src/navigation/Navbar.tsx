@@ -37,12 +37,19 @@ export default function ButtonAppBar() {
             <MenuItem
               onClick={() => {
                 setAnchorEl(null);
+                redirectTo("/");
+              }}
+            >
+              Home
+            </MenuItem>
+            <MenuItem
+              onClick={() => {
+                setAnchorEl(null);
                 redirectTo("/users");
               }}
             >
-              Profile
+              Users
             </MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
             <MenuItem onClick={handleClose}>Logout</MenuItem>
           </Menu>
           <IconButton
