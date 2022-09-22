@@ -30,24 +30,42 @@ interface ErrorMessage {
     message: string,
     error: any
 }
-namespace UsersN {
-    interface User {
-        /**Date */
-        date: string
-        userId: number
-        products: [{
-            productId?: number
-            quantity?: number
-        }]
-    }
-    type Users = User[]
-}
+// namespace UsersN {
+//     interface User {
+//         /**Date */
+//         date: string
+//         userId: number
+//         products: [{
+//             productId?: number
+//             quantity?: number
+//         }]
+//     }
+//     type Users = User[]
+// }
 
-interface ProductBasket {
-    productId: number;
-    quantity: number;
+interface User {
+    address: {
+        city: string
+        geolocation: {
+            lat: string
+            long: string
+        }
+        number: number
+        street: string
+        zipcode: string
+    }
+    email: string
+    id: number
+    name: {
+        firstname: string
+        lastname: string
+    }
+    password: string
+    phone: string
+    username: string
 }
-type BasketArr = ProductBasket[]
+type Users = User[]
+
 
 
 

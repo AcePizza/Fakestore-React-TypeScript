@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ErrorMessage, ProductsN, UsersN } from "../@types";
+import { ErrorMessage, ProductsN, Users } from "../@types";
 
 export const useFetchProducts = () => {
   const [data, setData] = useState<ProductsN.Products>();
@@ -23,15 +23,14 @@ export const useFetchProducts = () => {
 };
 
 export const useFetchUsers = () => {
-  const [users, setUsers] = useState<UsersN.Users>();
+  const [users, setUsers] = useState<Users | null>(null);
   const [error, setError] = useState<ErrorMessage>();
   const [loading, setLoading] = useState(true);
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch("https://fakestoreapi.com/carts/user/1");
+      const response = await fetch("https://fakestoreapi.com/users");
       const result = await response.json();
-      console.log("result", result);
       setUsers(result);
     } catch (error) {
       setError({ message: "Fetch error!", error: error });

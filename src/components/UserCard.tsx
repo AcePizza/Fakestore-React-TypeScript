@@ -5,42 +5,31 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Container } from "@mui/system";
-import { UsersN } from "../@types";
+import { User } from "../@types";
 
-export default function UserCard(props: UsersN.User) {
-  console.log("Try", props);
-
+export default function UserCard(props: User) {
+  console.log("props", props);
   return (
     <>
-      <Container>
-        <Card sx={{ minWidth: 275 }}>
-          <CardContent>
-            <Typography
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
-              gutterBottom
-            >
-              Word of the Day
-            </Typography>
-            <Typography variant="h5" component="div">
-              Something
-            </Typography>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              adjective
-            </Typography>
-            <Typography variant="body2">
-              well meaning and kindly.
-              <br />
-              {'"a benevolent smile"'}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
-          </CardActions>
-        </Card>
-        <br />
-      </Container>
+      <Card sx={{ minWidth: 275 }}>
+        <CardContent>
+          <Typography variant="h5" component="div">
+            {props.username}
+          </Typography>
+          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            {props.email}
+          </Typography>
+
+          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+            {props.address.city}
+          </Typography>
+          <Typography variant="body2">{props.phone}</Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small">Learn More</Button>
+        </CardActions>
+      </Card>
+      <br />
     </>
   );
 }
