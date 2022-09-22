@@ -1,12 +1,32 @@
-import React, { createContext, useContext } from "react";
-import { GeneralContextInterface } from "../@types";
+import { jsx } from "@emotion/react";
+import React, { useState, createContext, FC } from "react";
 
-export const GeneralContext = createContext<GeneralContextInterface | null>(
-  null
-);
+interface IGeneralContext {
+  someValue: string;
+  someFunction?: () => void;
+}
 
-export const sampleGeneralContext: GeneralContextInterface = {
-  name: "John-117",
-  author: "Master Chief",
-  url: "https://en.wikipedia.org/wiki/Master_Chief_(Halo)",
+const defaultState = {
+  someValue: "42",
+};
+
+const GeneralContext = createContext<IGeneralContext>(defaultState);
+
+export const GeneralContextProvider: FC = ({ children }) => {
+  const [someValue, setSomeValue] = useState(defaultState.someValue);
+
+  const someFunction = () => {
+    setSomeValue("420");
+  };
+
+  return (
+    <GeneralContext.Provider
+      value={{
+        someValue,
+        someFunction,
+      }}
+    >
+      {children}
+    </GeneralContext.Provider>
+  );
 };

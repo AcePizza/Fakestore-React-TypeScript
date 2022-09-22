@@ -66,6 +66,11 @@ interface User {
 }
 type Users = User[]
 
+interface LoginDataType {
+    email: string;
+    password: string;
+}
+
 
 
 
