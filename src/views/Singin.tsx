@@ -13,11 +13,14 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { LoginDataType } from "../@types";
+import { GeneralContext } from "../context/GeneralContext";
 
 const theme = createTheme();
 
 export default function SignIn() {
   const [loginData, setLoginData] = React.useState<LoginDataType | null>(null);
+  const { someValue, someFunction, loginUser } =
+    React.useContext(GeneralContext);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -26,6 +29,7 @@ export default function SignIn() {
       email: data.get("email"),
       password: data.get("password"),
     });
+    loginUser?.(jsonObject);
   };
 
   return (
